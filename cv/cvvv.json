@@ -1,0 +1,46 @@
+{
+    "name": "FIRAS GMAR",
+    "contact_number": "98 107 578",
+    "email": "gmarfiras@gmail.com",
+    "Tools": ["Microsoft SQL Server", "Power BI", "QlikView", "Oracle Entreprise One", "Microsoft Visual Basic", "Microsoft Office 365"],
+    "skills": [
+        "Analyse fonctionnelle",
+        "Développement de logiciels et applications",
+        "Gestion de l'infrastructure informatique",
+        "Business Intelligence (BI)",
+        "Migration et mise à niveau des systèmes informatiques",
+        "Administration des systèmes informatique",
+        "Métier et technique",
+        "Gestion de la sécurité informatique"
+    ],
+    "Profile_description": "Je suis un professionnel de l'informatique polyvalent avec une expérience solide de plus de 15 ans dans l'analyse fonctionnelle, le développement, la gestion de l'infrastructure, la BI et l ERP.",
+    "education_levels": [
+        {
+            "establishment": "Institut supérieure de gestion de Tunis",
+            "level": "Maitrise en Informatique appliqué à la gestion",
+            "start_year": "2005"
+        }
+    ],
+    "Professional_experience": [
+        {
+            "establishment": "Groupe DELICE",
+            "job": "Manager senior BI & Data sciences",
+            "Period in months": "",
+            "start_year": "2020",
+            "end_year": "",
+            "description": "Superviser le développement de rapports et de tableaux de bord BI pour l'entreprise, en utilisant des outils tels que PowerBI. Traiter et analyser les données pour produire des informations utiles et significatives pour les décideurs de l'entreprise."
+        },
+        {
+            "establishment": "Groupe DELICE",
+            "job": "Chef de département IT",
+            "Period in months": "",
+            "start_year": "2010",
+            "end_year": "2020",
+            "description": "Assurer la gestion de l'ensemble de l'infrastructure informatique de l'entreprise. Conception, mise en place et gestion du réseau informatique, des serveurs, des systèmes de stockage et de sauvegarde des données, ainsi que de la sécurité informatique."
+        }
+    ],
+    "Languages": [],
+    "Achievements": "",
+    "Text_CV": "Je suis un professionnel de l'informatique polyvalent avec une expérience solide de plus de 15 ans dans l'analyse fonctionnelle, le développement, la gestion de l'infrastructure, la BI et l ERP. Mon expertise en matière de gestion de projets et de développement de solutions innovantes a permis d'optimiser les processus métier de l'entreprise et d'augmenter son efficacité opérationnelle.",
+    "Job_recommended": "Data Scientist or Business Intelligence Manager"
+}

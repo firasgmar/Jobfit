@@ -1,0 +1,80 @@
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+
+# Specify the LLM model we'll be using
+model_name = "microsoft/Phi-3-mini-4k-instruct"
+model_name ="gpt2"
+# Configure for GPU usage
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    device_map="auto",
+    torch_dtype=torch.float16,
+    trust_remote_code=True,
+)
+# Load the tokenizer for the chosen model
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+# Create a pipeline object for easy text generation with the LLM
+pipe = pipeline("text-generation", model=model, tokenizer=tokenizer)
+
+# Parameters to control LLM's response generation
+generation_args = {
+    "max_new_tokens": 1024,     # Maximum length of the response
+    "return_full_text": False,      # Only return the generated text
+}
+def query(messages):
+  """Sends a conversation history to the AI assistant and returns the answer.
+  
+  Args:
+    messages (list): A list of dictionaries, each with "role" and "content" keys.
+  
+  Returns:
+    str: The answer from the AI assistant.
+  """ 
+
+  output = pipe(messages, **generation_args)
+  return output[0]['generated_text']
+
+import os
+import fitz
+import re
+def extract_text_from_pdf(pdf_path):
+  doc = fitz.open(pdf_path)
+  text = ""
+  for page_num in range(len(doc)):
+      page = doc.load_page(page_num)
+      text += page.get_text()
+  return text
+def clean_extracted_text(text):
+    # Supprimer les espaces multiples
+    text = re.sub(r'\s+', ' ', text)
+    # Supprimer les nouvelles lignes multiples
+    text = re.sub(r'\n+', '\n', text)
+    return text
+
+dossier_pdf='/content/drive/MyDrive/cv'
+for filename in os.listdir(dossier_pdf):
+    if filename.endswith('.pdf'):
+        #filename='CV Maryem HAHAJI .pdf'
+        resume_path = os.path.join(dossier_pdf, filename)
+        text = extract_text_from_pdf(resume_path)
+        text = clean_extracted_text(text)
+        messages = [
+            {"role": "system", "content": "Return the name of the person in CV data in this format  Name:  "},
+            {"role": "user", "content": text}
+        ]
+        messages = [
+            {"role": "system", "content": "Parse the CV data in this python dict format below,Return exactly the dict value : \
+            \{'Name': "", \
+            'Phone Number': ,\
+            'Mail': "" ,\
+            'Date of birth' : ,\
+            'Diplomes':[], \
+            'Experience':[], \
+            'Skills':[], \
+            'Languages':[] \
+            "},
+            {"role": "user", "content": text}
+        ]
+        result = query(messages)
+        print("Names:",result)
+    
